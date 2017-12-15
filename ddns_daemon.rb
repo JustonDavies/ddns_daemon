@@ -5,7 +5,7 @@ require 'daemons'
 ENVIRONMENT = 'production'
 CONFIGURATION = YAML.load_file('config/secrets.yml')[ENVIRONMENT]
 
-CHECK_FREQUENCY = 10#2 * 60   #2 * minutes
+CHECK_FREQUENCY = 2.5 * 60 #2.5 * minutes
 
 LOG_DIRECTORY = "#{File.expand_path File.dirname(__FILE__)}/log"
 
