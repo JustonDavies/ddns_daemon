@@ -1,0 +1,17 @@
+development:
+  gandi:
+    api_uri: https://dns.api.gandi.net/api/v5/
+    api_token: 123abc
+
+production:
+  gandi:
+    api_uri: https://dns.api.gandi.net/api/v5/
+    api_token: 123abc
+  ddns:
+    domains:
+      - name: domain.net
+        records:
+          - name: "@"
+            type: A
+          - name: sub
+            type: A
