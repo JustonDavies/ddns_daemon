@@ -12,7 +12,7 @@ class DDNS
   end
 
   def self.update_dns_records
-    _current_external_ip = self.external_ip_address.to_s
+    _current_external_ip = self.external_ip_address.to_s.strip
 
     DOMAINS.each do |tracked_domain|
       LOGGER.info "Starting updates for #{tracked_domain['name']}"
@@ -30,7 +30,7 @@ class DDNS
         _full_dns_name = "#{tracked_record['name']}.#{tracked_domain['name']}"
         _full_dns_name = tracked_domain['name'] if tracked_record['name'] == '@'
 
-        _current_dns_answer = `dig +short #{_full_dns_name}`.to_s
+        _current_dns_answer = `dig +short #{_full_dns_name}`.to_s.strip
         _dns_query_incorrect = _current_dns_answer != _current_external_ip
 
         _record = Gandi::Record.get(zone_uuid: _zone_uuid, name: tracked_record['name'], type: tracked_record['type'])
