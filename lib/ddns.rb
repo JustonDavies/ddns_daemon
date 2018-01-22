@@ -34,7 +34,7 @@ class DDNS
         _dns_query_incorrect = _current_dns_answer != _current_external_ip
 
         _record = Gandi::Record.get(zone_uuid: _zone_uuid, name: tracked_record['name'], type: tracked_record['type'])
-        _remote_record_incorrect = _record == nil or _record[:values] == nil and _record[:values].first != _current_external_ip
+        _remote_record_incorrect = _record == nil or _record[:values] == nil or _record[:values].first != _current_external_ip
 
         if _dns_query_incorrect or _remote_record_incorrect
           LOGGER.info "Record update required for #{_full_dns_name}: Set #{_current_external_ip}"
