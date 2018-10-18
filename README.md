@@ -1,4 +1,4 @@
-### Purpose:
+### Purpose: 
   This project exists as a simple and extensible DDNS client to track and update a list of domains across a list of providers to help ensure timely and accurate DNS updates for a dynamic environment
 
 ### Dependencies:
